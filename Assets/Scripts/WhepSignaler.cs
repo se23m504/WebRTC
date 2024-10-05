@@ -64,6 +64,14 @@ namespace Microsoft.MixedReality.WebRTC.Unity
             {
                 LocalPeerId = SystemInfo.deviceName;
             }
+
+            PeerConnection.OnInitialized.AddListener(StartConnection);
+        }
+
+        private void StartConnection()
+        {
+            Debug.Log($"Local peer ID is {LocalPeerId}");
+            PeerConnection.StartConnection();
         }
 
         private IEnumerator PostToServer(String msg)

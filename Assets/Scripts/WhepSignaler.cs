@@ -74,6 +74,20 @@ namespace Microsoft.MixedReality.WebRTC.Unity
             PeerConnection.StartConnection();
         }
 
+        public void RestartConnection()
+        {
+            PeerConnection.enabled = false;
+            RemotePeerId = null;
+            lastMessage = "";
+            PeerConnection.enabled = true;
+        }
+
+/*        public void StopConnection()
+        {
+            PeerConnection.enabled = false;
+            Debug.Log($"Peer connection {PeerConnection.enabled}");
+        }
+*/
         private IEnumerator PostToServer(String msg)
         {
             if (RemotePeerId == null || RemotePeerId.Length == 0)
